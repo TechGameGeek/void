@@ -28,11 +28,11 @@ sudo ln -s /etc/sv/dbus /var/service
 
 
 #NVIDIA Treiber installieren / Install NVIDIA-driver
-sudo xbps-install -y nvidia-driver nvidia-drm nvidia-utils
+sudo xbps-install -y nvidia
 
 #XORG & Cinnamon & Tools
 sudo xbps-install -y xorg
-sudo xbps-install -y cinnamon-all xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs xdg-user-dirs-gtk xdg-utils
+sudo xbps-install -y octoxbps cinnamon-all xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs xdg-user-dirs-gtk xdg-utils
 
 #Druckerunterstuetzung / Printersupport
 sudo xbps-install -y cups cups-filters gutenprint
@@ -43,6 +43,9 @@ sudo xbps-install -y noto-fonts-cjk noto-fonts-emoji noto-fonts-ttf noto-fonts-t
 
 #Software
 sudo xbps-install -y firefox-esr terminal
+
+#Cinnamon-Themes
+sudo xbps-install -y arc-icon-theme arc-theme
 
 #Loginmanager
 sudo xbps-install -y lightdm light-gtk-greeter

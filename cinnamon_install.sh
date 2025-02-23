@@ -44,9 +44,6 @@ sudo xbps-install -y noto-fonts-cjk noto-fonts-emoji noto-fonts-ttf noto-fonts-t
 #Software
 sudo xbps-install -y firefox-esr terminal
 
-#Cinnamon-Themes
-sudo xbps-install -y arc-icon-theme arc-theme
-
 #Loginmanager
 sudo xbps-install -y lightdm light-gtk-greeter
 sudo ln -s /etc/sv/lightdm/ /var/service/
@@ -54,9 +51,12 @@ sudo ln -s /etc/sv/lightdm/ /var/service/
 #Cinnamon-Themes
 sudo xbps-install -y arc-icon-theme arc-theme
 
-#Setup Theme
+#Theme-Einstellungen / Setup Theme
 gsettings set org.cinnamon.desktop.interface icon-theme Arc
 gsettings set org.cinnamon.desktop.interface gtk-theme Arc-Dark
 gsettings set org.cinnamon.theme name Arc-Dark
 
+#Hintergundbild setzen / Set Wallpaper
+#muss natürlich vorhanden sein! / Has to be installed in this folder!
+gsettings set org.cinnamon.desktop.background picture-uri "file:///usr/share/wallpaper/mystical.jpeg
 

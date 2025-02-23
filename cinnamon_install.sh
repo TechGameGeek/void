@@ -51,3 +51,12 @@ sudo xbps-install -y arc-icon-theme arc-theme
 sudo xbps-install -y lightdm light-gtk-greeter
 sudo ln -s /etc/sv/lightdm/ /var/service/
 
+#Cinnamon-Themes
+sudo xbps-install -y arc-icon-theme arc-theme
+
+#Setup Theme
+gsettings set org.cinnamon.desktop.interface icon-theme Arc
+gsettings set org.cinnamon.desktop.interface gtk-theme Arc-Dark
+gsettings set org.cinnamon.theme name Arc-Dark
+
+

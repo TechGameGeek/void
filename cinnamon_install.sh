@@ -54,10 +54,46 @@ sleep 1
 clear
 echo "Install pipewire, wireplumber, pavucontrol, pulsemixer"
 sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer
-#sudo ln -s /etc/sv/pipewire /var/service/
-#sudo ln -s /etc/sv/pipewire-pulse /var/service/
-#sudo usermod -aG _pipewire,pulse,pulse-access $USER
-sleep 1
+
+sleep 1#!/bin/bash
+
+# Installiere die benötigten Pakete
+sudo xbps-install -y pipewire wireplumber pipewire-pulse
+
+# Erstelle die Verzeichnisse für die Dienste, falls sie nicht existieren
+sudo mkdir -p /etc/sv/pipewire
+sudo mkdir -p /etc/sv/pipewire-pulse
+sudo mkdir -p /etc/sv/wireplumber
+
+# Erstelle und konfiguriere den PipeWire-Dienst
+echo -e "#!/bin/sh\nexec pipewire" | sudo tee /etc/sv/pipewire/run > /dev/null
+sudo chmod +x /etc/sv/pipewire/run
+
+# Erstelle und konfiguriere den PipeWire-Pulse-Dienst
+echo -e "#!/bin/sh\nexec pipewire-pulse" | sudo tee /etc/sv/pipewire-pulse/run > /dev/null
+sudo chmod +x /etc/sv/pipewire-pulse/run
+
+# Erstelle und konfiguriere den WirePlumber-Dienst
+echo -e "#!/bin/sh\nexec wireplumber" | sudo tee /etc/sv/wireplumber/run > /dev/null
+sudo chmod +x /etc/sv/wireplumber/run
+
+# Setze die symbolischen Links, um die Dienste beim Booten zu aktivieren
+sudo ln -s /etc/sv/pipewire /var/service/
+sudo ln -s /etc/sv/pipewire-pulse /var/service/
+sudo ln -s /etc/sv/wireplumber /var/service/
+
+# Starte die Dienste
+sudo sv start pipewire
+sudo sv start pipewire-pulse
+sudo sv start wireplumber
+
+# Optional: Status der Dienste anzeigen
+sudo sv status pipewire
+sudo sv status pipewire-pulse
+sudo sv status wireplumber
+
+echo "PipeWire, PipeWire-Pulse und WirePlumber wurden erfolgreich eingerichtet und gestartet."
+
 
 #dbus
 clear

@@ -41,11 +41,12 @@ sudo ln -s /etc/sv/NetworkManager /var/service/
 #Audio
 sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer
 sudo ln -s /etc/sv/pipewire /var/service/
+sudo ln -s /etc/sv/pipewire-pulse /var/service/
 sudo usermod -aG _pipewire,pulse,pulse-access $USER
 
 #dbus
 sudo xbps-install -y dbus
-sudo ln -s /etc/sv/dbus /var/service
+sudo ln -s /etc/sv/dbus /var/service/
 
 #NVIDIA Treiber installieren / Install NVIDIA-driver
 sudo xbps-install -y nvidia
@@ -56,7 +57,14 @@ sudo xbps-install -y octoxbps cinnamon-all xdg-desktop-portal xdg-desktop-portal
 
 #Druckerunterstuetzung / Printersupport
 sudo xbps-install -y cups cups-filters gutenprint
-sudo ln -s /etc/sv/cupsd /var/service
+sudo ln -s /etc/sv/cupsd /var/service/
+sudo xbps-install -y gnome-system-tools users-admin
+
+#Filesystem
+sudo xbps-install -y exfat-utils fuse-exfat gvfs-afc gvfs-mtp gvfs-smb udisks2 ntfs-3g gptfdisk 
+
+#Flatpak / Upgradetool
+sudo xbps-install -y flatpak topgrade
 
 #Fonts
 sudo xbps-install -y noto-fonts-cjk noto-fonts-emoji noto-fonts-ttf noto-fonts-ttf-extra
@@ -78,5 +86,5 @@ gsettings set org.cinnamon.theme name Arc-Dark
 
 #Hintergundbild setzen / Set Wallpaper
 #muss natürlich vorhanden sein! / Has to be installed in this folder!
-gsettings set org.cinnamon.desktop.background picture-uri file:///usr/share/wallpaper/mystical.jpeg
+#gsettings set org.cinnamon.desktop.background picture-uri file:///usr/share/wallpaper/mystical.jpeg
 

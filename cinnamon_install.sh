@@ -18,6 +18,10 @@ echo "Bitte Rootpasswort eingeben / Please give rootpassword"
 su -c "chsh -s /bin/bash root"
 sleep 2
 
+clear
+sudo mkdir -p /usr/share/backgrounds/
+sudo cp ~/void/*.jpg /usr/share/backgrounds/
+
 #Sudo einrichten / Activate sudo
 clear
 echo "Aktiviere sudo für Gruppe wheel / Activate sudo for wheel-group"

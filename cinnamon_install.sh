@@ -1,5 +1,8 @@
 #!bin/bash
-#WORK IN PROGRESS -- do not use yet!
+#Skript ist noch nicht fertig - noch nicht verweden! / WORK IN PROGRESS -- do not use yet!
+#Das Skript ist für NVIDIA-GPU Besitzer gedacht / AMD GPU Besitzer kommentieren die Zeile mit der NVIDIA Paketinstallation aus!
+#This script is intended to be used by NVIDIA-GPU Owners, you may comment the line with
+#sudo xbps-install -y nvidia if you have an AMD-GPU
 #Void aktualisieren / update void
 sudo xbps-install -Syu
 
@@ -42,7 +45,7 @@ sudo ln -s /etc/sv/cupsd /var/service
 sudo xbps-install -y noto-fonts-cjk noto-fonts-emoji noto-fonts-ttf noto-fonts-ttf-extra
 
 #Software
-sudo xbps-install -y firefox-esr terminal
+sudo xbps-install -y firefox terminal
 
 #Loginmanager
 sudo xbps-install -y lightdm light-gtk-greeter
@@ -58,5 +61,5 @@ gsettings set org.cinnamon.theme name Arc-Dark
 
 #Hintergundbild setzen / Set Wallpaper
 #muss natürlich vorhanden sein! / Has to be installed in this folder!
-gsettings set org.cinnamon.desktop.background picture-uri "file:///usr/share/wallpaper/mystical.jpeg
+gsettings set org.cinnamon.desktop.background picture-uri file:///usr/share/wallpaper/mystical.jpeg
 

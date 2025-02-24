@@ -5,6 +5,9 @@
 #sudo xbps-install -y nvidia if you have an AMD-GPU
 #Void aktualisieren / update void
 
+#Setze Keyboardlayout de-latin1 / Set keyboard de-latin1 (if you don't want DE-key comment out this line)
+#loadkeys de-latin1
+
 #Sudo einrichten
 entry="%wheel ALL=(ALL:ALL) ALL"
 echo "$entry" | sudo tee -a /etc/sudoers > /dev/null

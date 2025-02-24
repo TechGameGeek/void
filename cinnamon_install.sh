@@ -133,8 +133,8 @@ sleep 1
 
 #Filesystem
 clear
-echo "Install Dateisystemtools/Installing Filesstemtools..."
-sudo xbps-install -y exfat-utils fuse-exfat gvfs-afc gvfs-mtp gvfs-smb udisks2 ntfs-3g gptfdisk 
+echo "Install Zusatztools/Installing additional tools..."
+sudo xbps-install -y exfat-utils fuse-exfat gvfs-afc gvfs-mtp gvfs-smb udisks2 ntfs-3g gptfdisk bluez
 sleep 1
 
 #Flatpak / Upgradetool
@@ -152,7 +152,7 @@ sleep 1
 #Software
 clear
 echo "Install Software..."
-sudo xbps-install -y firefox gnome-terminal bluez
+sudo xbps-install -y firefox gnome-terminal
 sleep 1
 # Erstelle ein Skript, das die gsettings nach der Anmeldung ausführt
 echo "Creating autostart script for cinnamon theme settings..."

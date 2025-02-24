@@ -12,12 +12,10 @@
 #The following script is for installing Cinnamon & Services after installing base-void (glibc)
 
 #bash starten & bash für root setzen / start bash - set for root
-bash
-chsh -s /bin/bash root
+su -c "chsh -s /bin/bash root"
 
 #Sudo einrichten / Activate sudo
-entry="%wheel ALL=(ALL:ALL) ALL"
-echo "$entry" | sudo tee -a /etc/sudoers > /dev/null
+su -c 'echo "%wheel ALL=(ALL:ALL) ALL" | tee -a /etc/sudoers > /dev/null'
 
 #Systemupdate checken / Check systemupdates
 sudo xbps-install -Syu

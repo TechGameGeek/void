@@ -31,7 +31,7 @@ sudo xbps-install -y NetworkManager
 sudo ln -s /etc/sv/NetworkManager /var/service/
 
 #Audio
-sudo xbps-install -y pipewire wireplumber
+sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer
 sudo ln -s /etc/sv/pipewire /var/service/
 sudo ln -s /etc/sv/pipewire-pulse /var/service/
 sudo usermod -aG _pipewire,pulse,pulse-access $USER

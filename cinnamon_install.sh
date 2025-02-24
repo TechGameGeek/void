@@ -4,6 +4,11 @@
 #This script is intended to be used by NVIDIA-GPU Owners, you may comment the line with
 #sudo xbps-install -y nvidia if you have an AMD-GPU
 #Void aktualisieren / update void
+
+#Sudo einrichten
+entry="%wheel ALL=(ALL:ALL) ALL"
+echo "$entry" | sudo tee -a /etc/sudoers > /dev/null
+
 sudo xbps-install -Syu
 
 #void-nonfree Repository aktivieren / Activate void nonfree-repository
@@ -14,6 +19,9 @@ sudo xbps-install -y void-repo-multilib
 
 #Voidrepo aktualisieren / update voidrepository
 sudo xbps-install -Syu
+
+#Editor installieren / Install editor
+sudo xbps-install -y nano
 
 #Netzwerk/Network
 sudo xbps-install -y NetworkManager

@@ -8,10 +8,18 @@
 #Setze Keyboardlayout de-latin1 / Set keyboard de-latin1 (if you don't want DE-key comment out this line)
 #loadkeys de-latin1
 
-#Sudo einrichten
+#Das folgende Skript ist für die Installation von Cinnamon & div. Dienste gedacht, nachdem die Basisinstallation durchgefuehrt worden ist!
+#The following script is for installing Cinnamon & Services after installing base-void (glibc)
+
+#bash starten & bash für root setzen / start bash - set for root
+bash
+chsh -s /bin/bash root
+
+#Sudo einrichten / Activate sudo
 entry="%wheel ALL=(ALL:ALL) ALL"
 echo "$entry" | sudo tee -a /etc/sudoers > /dev/null
 
+#Systemupdate checken / Check systemupdates
 sudo xbps-install -Syu
 
 #void-nonfree Repository aktivieren / Activate void nonfree-repository
@@ -33,13 +41,11 @@ sudo ln -s /etc/sv/NetworkManager /var/service/
 #Audio
 sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer
 sudo ln -s /etc/sv/pipewire /var/service/
-sudo ln -s /etc/sv/pipewire-pulse /var/service/
 sudo usermod -aG _pipewire,pulse,pulse-access $USER
 
 #dbus
 sudo xbps-install -y dbus
 sudo ln -s /etc/sv/dbus /var/service
-
 
 #NVIDIA Treiber installieren / Install NVIDIA-driver
 sudo xbps-install -y nvidia

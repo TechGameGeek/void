@@ -116,7 +116,7 @@ sleep 1
 #Software
 clear
 echo "Install Software..."
-sudo xbps-install -y firefox terminal
+sudo xbps-install -y firefox gnome-terminal bluez
 sleep 1
 # Erstelle ein Skript, das die gsettings nach der Anmeldung ausführt
 echo "Creating autostart script for cinnamon theme settings..."

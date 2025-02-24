@@ -54,8 +54,7 @@ sleep 1
 clear
 echo "Install pipewire, wireplumber, pavucontrol, pulsemixer"
 sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer
-
-sleep 1#!/bin/bash
+sleep 1
 
 # Installiere die benötigten Pakete
 sudo xbps-install -y pipewire wireplumber pipewire-pulse
@@ -114,7 +113,7 @@ fi
 sleep 1
 
 #Steamkomponenten / Install some Steam-related-Stuff
-sudo xbps-install -S libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mesa-dri-32bit
+sudo xbps-install -y libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mesa-dri-32bit
 
 #XORG & Cinnamon & Tools
 clear

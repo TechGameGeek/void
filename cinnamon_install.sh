@@ -68,7 +68,7 @@ sudo xbps-install -y noto-fonts-cjk noto-fonts-emoji noto-fonts-ttf noto-fonts-t
 sudo xbps-install -y firefox terminal
 
 #Loginmanager
-sudo xbps-install -y lightdm light-gtk-greeter
+sudo xbps-install -y lightdm lightdm-gtk-greeter
 sudo ln -s /etc/sv/lightdm/ /var/service/
 
 #Cinnamon-Themes

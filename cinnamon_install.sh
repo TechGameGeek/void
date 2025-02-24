@@ -20,11 +20,8 @@ su -c 'echo "%wheel ALL=(ALL:ALL) ALL" | tee -a /etc/sudoers > /dev/null'
 #Systemupdate checken / Check systemupdates
 sudo xbps-install -Syu
 
-#void-nonfree Repository aktivieren / Activate void nonfree-repository
-sudo xbps-install -y void-repo-nonfree
-
-#void-multilib Repository aktivieren / Activate void multilib-repository (e.g. for Steaminstall)
-sudo xbps-install -y void-repo-multilib
+#void zusätzliche Repos aktivieren / activate all essential Repos
+sudo xbps-install -y void-repo-nonfree void-repo-multilib void-repo-multilib-nonfree
 
 #Voidrepo aktualisieren / update voidrepository
 sudo xbps-install -Syu
@@ -38,9 +35,9 @@ sudo ln -s /etc/sv/NetworkManager /var/service/
 
 #Audio
 sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer
-sudo ln -s /etc/sv/pipewire /var/service/
-sudo ln -s /etc/sv/pipewire-pulse /var/service/
-sudo usermod -aG _pipewire,pulse,pulse-access $USER
+#sudo ln -s /etc/sv/pipewire /var/service/
+#sudo ln -s /etc/sv/pipewire-pulse /var/service/
+#sudo usermod -aG _pipewire,pulse,pulse-access $USER
 
 #dbus
 sudo xbps-install -y dbus

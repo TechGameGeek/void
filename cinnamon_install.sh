@@ -56,44 +56,6 @@ echo "Install pipewire, wireplumber, pavucontrol, pulsemixer"
 sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer
 sleep 1
 
-# Installiere die benötigten Pakete
-sudo xbps-install -y pipewire wireplumber pipewire-pulse
-
-# Erstelle die Verzeichnisse für die Dienste, falls sie nicht existieren
-sudo mkdir -p /etc/sv/pipewire
-sudo mkdir -p /etc/sv/pipewire-pulse
-sudo mkdir -p /etc/sv/wireplumber
-
-# Erstelle und konfiguriere den PipeWire-Dienst
-echo -e "#!/bin/sh\nexec pipewire" | sudo tee /etc/sv/pipewire/run > /dev/null
-sudo chmod +x /etc/sv/pipewire/run
-
-# Erstelle und konfiguriere den PipeWire-Pulse-Dienst
-echo -e "#!/bin/sh\nexec pipewire-pulse" | sudo tee /etc/sv/pipewire-pulse/run > /dev/null
-sudo chmod +x /etc/sv/pipewire-pulse/run
-
-# Erstelle und konfiguriere den WirePlumber-Dienst
-echo -e "#!/bin/sh\nexec wireplumber" | sudo tee /etc/sv/wireplumber/run > /dev/null
-sudo chmod +x /etc/sv/wireplumber/run
-
-# Setze die symbolischen Links, um die Dienste beim Booten zu aktivieren
-sudo ln -s /etc/sv/pipewire /var/service/
-sudo ln -s /etc/sv/pipewire-pulse /var/service/
-sudo ln -s /etc/sv/wireplumber /var/service/
-
-# Starte die Dienste
-sudo sv start pipewire
-sudo sv start pipewire-pulse
-sudo sv start wireplumber
-
-# Optional: Status der Dienste anzeigen
-sudo sv status pipewire
-sudo sv status pipewire-pulse
-sudo sv status wireplumber
-
-echo "PipeWire, PipeWire-Pulse und WirePlumber wurden erfolgreich eingerichtet und gestartet."
-
-
 #dbus
 clear
 echo "Install dbus..."
@@ -157,11 +119,16 @@ sleep 1
 echo "Creating autostart script for cinnamon theme settings..."
 cat <<EOL > /home/$USER/set-cinnamon-theme.sh
 #!/bin/bash
-
-# Setze das gewünschte Cinnamon-Theme
+# Setze das gewünschte Cinnamon-Theme & deutsches Tastaturlayout
 gsettings set org.cinnamon.desktop.interface icon-theme Arc
 gsettings set org.cinnamon.desktop.interface gtk-theme Arc-Dark
 gsettings set org.cinnamon.theme name Arc-Dark
+gsettings set org.cinnamon.desktop.input-sources sources "[('xkb', 'de')]"
+gsettings set org.gnome.desktop.interface monospace-font-name 'Monospace 11'
+gsettings set org.cinnamon.desktop.background picture-uri 'file:///usr/share/backgrounds/cinnamon_background.jpg'
+
+
+
 
 # Lösche den Autostart-Eintrag nach der ersten Ausführung
 rm -f ~/.config/autostart/set-cinnamon-theme.desktop
@@ -186,6 +153,7 @@ EOL
 
 # Weiter mit weiteren Installationen oder zum Ende des Skripts
 echo "Cinnamon-Theme Autostart-Skript erstellt. Skript beendet."
+
 #Loginmanager
 clear
 echo "Install LightDM..."
@@ -199,3 +167,7 @@ echo "Install ArcTheme / Arc-icons..."
 sudo xbps-install -y arc-icon-theme arc-theme
 sleep 1
 
+# Füge die gewünschten Einstellungen zur LightDM-Konfiguration hinzu
+echo "theme-name=Arc-Dark" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
+echo "icon-theme-name=Arc" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
+echo "background=/usr/share/backgrounds/lightdmbackground.jpg" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null

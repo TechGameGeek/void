@@ -71,11 +71,14 @@ clear
 read -p "NVIDIA-Treiber installieren / Install Nvidia-driver? (1 = Ja/Yes, 0 = Nein/No): " auswahl
 if [ "$auswahl" -eq 1 ]; then
     echo "Installiere NVIDIA-Treiber / Installing NVIDIA..."
-    sudo xbps-install -y nvidia
+    sudo xbps-install -y nvidia nvidia-libs-32bit
 else
     echo "NVIDIA-Setup übersprungen / NVIDIA skipped."
 fi
 sleep 1
+
+#Steamkomponenten / Install some Steam-related-Stuff
+sudo xbps-install -S libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mesa-dri-32bit
 
 #XORG & Cinnamon & Tools
 clear

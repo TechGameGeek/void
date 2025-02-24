@@ -115,7 +115,39 @@ clear
 echo "Install Software..."
 sudo xbps-install -y firefox terminal
 sleep 1
+# Erstelle ein Skript, das die gsettings nach der Anmeldung ausführt
+echo "Creating autostart script for cinnamon theme settings..."
+cat <<EOL > /home/$USER/set-cinnamon-theme.sh
+#!/bin/bash
 
+# Setze das gewünschte Cinnamon-Theme
+gsettings set org.cinnamon.desktop.interface icon-theme Arc
+gsettings set org.cinnamon.desktop.interface gtk-theme Arc-Dark
+gsettings set org.cinnamon.theme name Arc-Dark
+
+# Lösche den Autostart-Eintrag nach der ersten Ausführung
+rm -f ~/.config/autostart/set-cinnamon-theme.desktop
+
+# Gib eine Nachricht aus, dass das Skript abgeschlossen ist
+echo "Cinnamon-Themes wurden gesetzt und Autostart-Eintrag entfernt."
+EOL
+
+# Stelle sicher, dass das Skript ausführbar ist
+chmod +x /home/$USER/set-cinnamon-theme.sh
+
+# Erstelle die Autostart-Datei, die das Skript ausführt
+mkdir -p ~/.config/autostart
+cat <<EOL > ~/.config/autostart/set-cinnamon-theme.desktop
+[Desktop Entry]
+Type=Application
+Exec=/home/$USER/set-cinnamon-theme.sh
+Name=Set Cinnamon Theme
+Comment=Set the default Cinnamon theme after login
+X-GNOME-Autostart-enabled=true
+EOL
+
+# Weiter mit weiteren Installationen oder zum Ende des Skripts
+echo "Cinnamon-Theme Autostart-Skript erstellt. Skript beendet."
 #Loginmanager
 clear
 echo "Install LightDM..."
@@ -128,13 +160,4 @@ clear
 echo "Install ArcTheme / Arc-icons..."
 sudo xbps-install -y arc-icon-theme arc-theme
 sleep 1
-
-#Theme-Einstellungen / Setup Theme
-#gsettings set org.cinnamon.desktop.interface icon-theme Arc
-#gsettings set org.cinnamon.desktop.interface gtk-theme Arc-Dark
-#gsettings set org.cinnamon.theme name Arc-Dark
-
-#Hintergundbild setzen / Set Wallpaper
-#muss natürlich vorhanden sein! / Has to be installed in this folder!
-#gsettings set org.cinnamon.desktop.background picture-uri file:///usr/share/wallpaper/mystical.jpeg
 

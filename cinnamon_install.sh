@@ -1,5 +1,5 @@
 #!bin/bash
-
+#WORK IN PROGRESS -- do not use yet!
 #Void aktualisieren / update void
 sudo xbps-install -Syu
 

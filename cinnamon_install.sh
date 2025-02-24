@@ -67,6 +67,7 @@ sudo ln -s /etc/sv/dbus /var/service/
 sleep 1
 
 #NVIDIA Treiber installieren / Install NVIDIA-driver
+clear
 read -p "NVIDIA-Treiber installieren / Install Nvidia-driver? (1 = Ja/Yes, 0 = Nein/No): " auswahl
 if [ "$auswahl" -eq 1 ]; then
     echo "Installiere NVIDIA-Treiber / Installing NVIDIA..."
@@ -74,38 +75,64 @@ if [ "$auswahl" -eq 1 ]; then
 else
     echo "NVIDIA-Setup übersprungen / NVIDIA skipped."
 fi
+sleep 1
+
 #XORG & Cinnamon & Tools
+clear
+echo "Install XORG/Cinnamon-all..."
 sudo xbps-install -y xorg
 sudo xbps-install -y octoxbps cinnamon-all xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs xdg-user-dirs-gtk xdg-utils
+sleep 1
 
 #Druckerunterstuetzung / Printersupport
+clear
+echo "Install Printer..."
 sudo xbps-install -y cups cups-filters gutenprint
 sudo ln -s /etc/sv/cupsd /var/service/
 sudo xbps-install -y gnome-system-tools users-admin
+sleep 1
 
 #Filesystem
+clear
+echo "Install Dateisystemtools/Installing Filesstemtools..."
 sudo xbps-install -y exfat-utils fuse-exfat gvfs-afc gvfs-mtp gvfs-smb udisks2 ntfs-3g gptfdisk 
+sleep 1
 
 #Flatpak / Upgradetool
+clear
+echo "Install Flatpak / topgrade..."
 sudo xbps-install -y flatpak topgrade
+sleep 1
 
 #Fonts
+clear
+echo "Install Fonts..."
 sudo xbps-install -y noto-fonts-cjk noto-fonts-emoji noto-fonts-ttf noto-fonts-ttf-extra
+sleep 1
 
 #Software
+clear
+echo "Install Software..."
 sudo xbps-install -y firefox terminal
+sleep 1
 
 #Loginmanager
+clear
+echo "Install LightDM..."
 sudo xbps-install -y lightdm lightdm-gtk-greeter
 sudo ln -s /etc/sv/lightdm/ /var/service/
+sleep 1
 
 #Cinnamon-Themes
+clear
+echo "Install ArcTheme / Arc-icons..."
 sudo xbps-install -y arc-icon-theme arc-theme
+sleep 1
 
 #Theme-Einstellungen / Setup Theme
-gsettings set org.cinnamon.desktop.interface icon-theme Arc
-gsettings set org.cinnamon.desktop.interface gtk-theme Arc-Dark
-gsettings set org.cinnamon.theme name Arc-Dark
+#gsettings set org.cinnamon.desktop.interface icon-theme Arc
+#gsettings set org.cinnamon.desktop.interface gtk-theme Arc-Dark
+#gsettings set org.cinnamon.theme name Arc-Dark
 
 #Hintergundbild setzen / Set Wallpaper
 #muss natürlich vorhanden sein! / Has to be installed in this folder!

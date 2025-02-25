@@ -165,6 +165,19 @@ Comment=Set the default Cinnamon theme after login
 X-GNOME-Autostart-enabled=true
 EOL
 
+# .desktop-Datei für octoxbps-notifier erstellen / create .desktopfile für octoxbps-notifier
+cat > ~/.config/autostart/octoxbps-notifier.desktop <<EOL
+[Desktop Entry]
+Type=Application
+Exec=/bin/octoxbps-notifier
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=OctoXBPS Notifier
+Comment=Startet OctoXBPS Update Notifier automatisch
+EOL
+
+
 # Weiter mit weiteren Installationen oder zum Ende des Skripts
 echo "Cinnamon-Theme Autostart-Skript erstellt. Skript beendet."
 

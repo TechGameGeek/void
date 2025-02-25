@@ -69,10 +69,10 @@ sudo xbps-install -y elogind
 sudo ln -s /etc/sv/elogind /var/service/
 sleep 1
 
-#Audio
+#Audio/bluetooth/Mixer
 clear
 echo "Install pipewire, wireplumber, pavucontrol, pulsemixer"
-sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer
+sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer libspa-bluetooth
 sleep 1
 
 #NVIDIA Treiber installieren / Install NVIDIA-driver

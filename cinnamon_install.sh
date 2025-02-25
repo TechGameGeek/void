@@ -18,18 +18,19 @@ echo "Bitte Rootpasswort eingeben / Please give rootpassword"
 su -c "chsh -s /bin/bash root"
 sleep 2
 
-#Styling
-clear
-echo "Richte LightDM und Cinnamon Hintergrundbild ein / Setting up Lightdm/Cinnamon backgroundimage"
-sudo mkdir -p /usr/share/backgrounds/
-sudo cp ~/void/*.jpg /usr/share/backgrounds/
-
 #Sudo einrichten / Activate sudo
 clear
 echo "Aktiviere sudo für Gruppe wheel / Activate sudo for wheel-group"
 echo "Bitte Rootpasswort eingeben / Please give rootpassword"
 su -c 'echo "%wheel ALL=(ALL:ALL) ALL" | tee -a /etc/sudoers > /dev/null'
 sleep 2
+
+#Styling
+clear
+echo "Richte LightDM und Cinnamon Hintergrundbild ein / Setting up Lightdm/Cinnamon backgroundimage"
+sudo mkdir -p /usr/share/backgrounds/
+sudo cp ~/void/*.jpg /usr/share/backgrounds/
+
 
 #Systemupdate checken / Check systemupdates
 sudo xbps-install -Syu

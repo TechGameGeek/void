@@ -178,6 +178,20 @@ Name=OctoXBPS Notifier
 Comment=Startet OctoXBPS Update Notifier automatisch
 EOL
 
+# .desktop-Datei für deutsche Tastatur / create .desktopfile für german-X11-keyboard
+# Bitte Autostarteintrag in Cinnamon deaktivieren wenn ihr es direkt in Cinnamon setzen wollt
+# Please remove this autostart-entry if you would like to set the keyboardlayout directly in Cinnamon
+cat > ~/.config/autostart/octoxbps-notifier.desktop <<EOL
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/setxkbmap de
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=OctoXBPS Notifier
+Comment=Startet OctoXBPS Update Notifier automatisch
+EOL
+
 
 # Weiter mit weiteren Installationen oder zum Ende des Skripts
 echo "Cinnamon-Theme Autostart-Skript erstellt. Skript beendet."

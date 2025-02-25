@@ -28,6 +28,7 @@ sleep 2
 #Styling
 clear
 echo "Richte LightDM und Cinnamon Hintergrundbild ein / Setting up Lightdm/Cinnamon backgroundimage"
+echo " -- Bitte unten das sudo Passwort eingeben / Please give sudo-password -- "
 sudo mkdir -p /usr/share/backgrounds/
 sudo cp ~/void/*.jpg /usr/share/backgrounds/
 

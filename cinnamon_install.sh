@@ -214,5 +214,8 @@ clear
 #Deutsche Tastatur aktivieren X11 / Activate german keyboard for X11
 echo "de_DE" > "$HOME/.config/user-dirs.locale"
 
+#Setup automount ssd/hdd - ohne fstab / setup automount for ssds/hdds - without fstab
+sudo cp ~/void/10-mount-drives.rules /etc/polkit-1/rules.d/
+clear
 echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"
 echo "sudo reboot verwenden - use sudo reboot"

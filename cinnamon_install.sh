@@ -108,6 +108,8 @@ sleep 1
 clear
 echo "Install Zusatztools/Installing additional tools..."
 sudo xbps-install -y exfat-utils fuse-exfat gvfs-afc gvfs-mtp gvfs-smb udisks2 ntfs-3g gptfdisk bluez
+#Aktiviere bluetoothd/activate bluetoothd
+sudo ln -s /etc/sv/bluetoothd /var/service/
 sleep 1
 
 #Flatpak / Upgradetool

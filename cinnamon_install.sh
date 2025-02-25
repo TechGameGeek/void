@@ -198,5 +198,8 @@ sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pip
 sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
 sleep 1
 clear
+#Deutsche Tastatur aktivieren X11 / Activate german keyboard for X11
+echo "de_DE" > "$HOME/.config/user-dirs.locale"
+
 echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"
 echo "sudo reboot verwenden - use sudo reboot"

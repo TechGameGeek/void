@@ -18,7 +18,9 @@ echo "Bitte Rootpasswort eingeben / Please give rootpassword"
 su -c "chsh -s /bin/bash root"
 sleep 2
 
+#Styling
 clear
+echo "Richte LightDM und Cinnamon Hintergrundbild ein / Setting up Lightdm/Cinnamon backgroundimage"
 sudo mkdir -p /usr/share/backgrounds/
 sudo cp ~/void/*.jpg /usr/share/backgrounds/
 
@@ -74,6 +76,11 @@ clear
 echo "Install pipewire, wireplumber, pavucontrol, pulsemixer"
 sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer libspa-bluetooth
 sleep 1
+
+#Setup Autostart - pipewire & wireplubmer
+ln -s /usr/share/applications/wireplumber.desktop /etc/xdg/autostart/
+ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
+
 
 #NVIDIA Treiber installieren / Install NVIDIA-driver
 clear

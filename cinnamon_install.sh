@@ -190,9 +190,15 @@ echo "icon-theme-name=Arc" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf >
 echo "background=/usr/share/backgrounds/lightdmbackground.jpg" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
 
 #Setup Autostart - pipewire & wireplubmer
+
+sudo mkdir -p /etc/pipewire/pipewire.conf.d
+
+sudo ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
+sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
+
 sudo ln -s /usr/share/applications/wireplumber.desktop /etc/xdg/autostart/
 sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
 sleep 1
-cleaer
+clear
 echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"
 echo "sudo reboot verwenden - use sudo reboot"

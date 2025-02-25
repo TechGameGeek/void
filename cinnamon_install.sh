@@ -65,7 +65,6 @@ sudo ln -s /etc/sv/dbus /var/service/
 sleep 1
 
 #elogind
-#dbus
 clear
 echo "Install elogind..."
 sudo xbps-install -y elogind

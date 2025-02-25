@@ -181,15 +181,15 @@ EOL
 # .desktop-Datei für deutsche Tastatur / create .desktopfile für german-X11-keyboard
 # Bitte Autostarteintrag in Cinnamon deaktivieren wenn ihr es direkt in Cinnamon setzen wollt
 # Please remove this autostart-entry if you would like to set the keyboardlayout directly in Cinnamon
-cat > ~/.config/autostart/octoxbps-notifier.desktop <<EOL
+cat > ~/.config/autostart/x11kb-german.desktop <<EOL
 [Desktop Entry]
 Type=Application
 Exec=/usr/bin/setxkbmap de
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
-Name=OctoXBPS Notifier
-Comment=Startet OctoXBPS Update Notifier automatisch
+Name=X11-KB-German
+Comment=Deutsche Tastatur aktivieren unter X11
 EOL
 
 

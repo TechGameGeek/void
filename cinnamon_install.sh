@@ -196,6 +196,7 @@ sudo mkdir -p /etc/pipewire/pipewire.conf.d
 sudo ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
 sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
 
+#folgende Zeile nicht auskommetieren sonst läuft pipewire nicht / do not activate the following line. pipewire stops working if so!
 #sudo ln -s /usr/share/applications/wireplumber.desktop /etc/xdg/autostart/
 sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
 sleep 1

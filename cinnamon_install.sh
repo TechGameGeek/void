@@ -77,11 +77,6 @@ echo "Install pipewire, wireplumber, pavucontrol, pulsemixer"
 sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer libspa-bluetooth
 sleep 1
 
-#Setup Autostart - pipewire & wireplubmer
-ln -s /usr/share/applications/wireplumber.desktop /etc/xdg/autostart/
-ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
-
-
 #NVIDIA Treiber installieren / Install NVIDIA-driver
 clear
 read -p "NVIDIA-Treiber installieren / Install Nvidia-driver? (1 = Ja/Yes, 0 = Nein/No): " auswahl
@@ -192,3 +187,11 @@ sleep 1
 echo "theme-name=Arc-Dark" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
 echo "icon-theme-name=Arc" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
 echo "background=/usr/share/backgrounds/lightdmbackground.jpg" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
+
+#Setup Autostart - pipewire & wireplubmer
+ln -s /usr/share/applications/wireplumber.desktop /etc/xdg/autostart/
+ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
+sleep 1
+cleaer
+echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"
+echo "sudo reboot verwenden - use sudo reboot"

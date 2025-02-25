@@ -1,5 +1,5 @@
 #!/bin/bash
-#Skript ist noch nicht fertig - noch nicht verweden! / WORK IN PROGRESS -- do not use yet!
+#Skript ist noch nicht fertig - noch nicht verwenden! / WORK IN PROGRESS -- do not use yet!
 #Das Skript ist für NVIDIA-GPU Besitzer gedacht / AMD GPU Besitzer kommentieren die Zeile mit der NVIDIA Paketinstallation aus!
 #This script is intended to be used by NVIDIA-GPU Owners, you may comment the line with
 #sudo xbps-install -y nvidia if you have an AMD-GPU

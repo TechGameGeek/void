@@ -142,9 +142,6 @@ gsettings set org.cinnamon.theme name Arc-Dark
 gsettings set org.cinnamon.desktop.input-sources sources "[('xkb', 'de')]"
 gsettings set org.gnome.desktop.interface monospace-font-name 'Monospace 11'
 gsettings set org.cinnamon.desktop.background picture-uri 'file:///usr/share/backgrounds/cinnamon_background.jpg'
-#Tastaturlayout X11 auf DE setzen / Set X-keyboardlayout to DE
-setxkbmap de
-
 
 
 # Lösche den Autostart-Eintrag nach der ersten Ausführung

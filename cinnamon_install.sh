@@ -54,17 +54,25 @@ sudo xbps-install -y NetworkManager
 sudo ln -s /etc/sv/NetworkManager /var/service/
 sleep 1
 
-#Audio
-clear
-echo "Install pipewire, wireplumber, pavucontrol, pulsemixer"
-sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer
-sleep 1
-
 #dbus
 clear
 echo "Install dbus..."
 sudo xbps-install -y dbus
 sudo ln -s /etc/sv/dbus /var/service/
+sleep 1
+
+#elogind
+#dbus
+clear
+echo "Install elogind..."
+sudo xbps-install -y elogind
+sudo ln -s /etc/sv/elogind /var/service/
+sleep 1
+
+#Audio
+clear
+echo "Install pipewire, wireplumber, pavucontrol, pulsemixer"
+sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer
 sleep 1
 
 #NVIDIA Treiber installieren / Install NVIDIA-driver

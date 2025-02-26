@@ -75,7 +75,7 @@ sleep 1
 #Audio/bluetooth/Mixer
 clear
 echo "Install pipewire, wireplumber, pavucontrol, pulsemixer"
-sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer libspa-bluetooth
+sudo xbps-install -y pipewire wireplumber pavucontrol pulsemixer libspa-bluetooth blueman bluez-cups
 sleep 1
 
 #NVIDIA Treiber installieren / Install NVIDIA-driver
@@ -102,7 +102,7 @@ sleep 1
 #Druckerunterstuetzung / Printersupport
 clear
 echo "Install Printer..."
-sudo xbps-install -y cups cups-filters gutenprint
+sudo xbps-install -y cups cups-filters gutenprint system-config-printer
 sudo ln -s /etc/sv/cupsd /var/service/
 sudo xbps-install -y gnome-system-tools users-admin
 sleep 1

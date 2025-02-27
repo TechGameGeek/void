@@ -32,6 +32,9 @@ echo " -- Bitte unten das sudo Passwort eingeben / Please give sudo-password -- 
 sudo mkdir -p /usr/share/backgrounds/
 sudo cp ~/void/*.jpg /usr/share/backgrounds/
 
+#Kopire Autostartscript für udisks2 / copy automountscript für udisk2
+sudo cp ~/void/mount_disks.sh /usr/bin/
+
 
 #Systemupdate checken / Check systemupdates
 sudo xbps-install -Syu
@@ -190,6 +193,20 @@ NoDisplay=false
 X-GNOME-Autostart-enabled=true
 Name=X11-KB-German
 Comment=Deutsche Tastatur aktivieren unter X11
+EOL
+
+# .desktop-Datei für automount-script - udisks2 / create .desktopfile for auto-mount script (for udisks2)
+# Bitte Autostarteintrag in Cinnamon deaktivieren wenn ihr es direkt in Cinnamon setzen wollt
+# Please remove this autostart-entry if you would like to set the keyboardlayout directly in Cinnamon
+cat > ~/.config/autostart/automount-udisks2.desktop <<EOL
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/mount_disks.sh 
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=X11-automount-udisks2
+Comment=Automountscript für udisks2
 EOL
 
 

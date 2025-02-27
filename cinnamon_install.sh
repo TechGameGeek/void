@@ -83,13 +83,36 @@ sleep 1
 
 #NVIDIA Treiber installieren / Install NVIDIA-driver
 clear
-read -p "NVIDIA-Treiber installieren / Install Nvidia-driver? (1 = Ja/Yes, 0 = Nein/No): " auswahl
-if [ "$auswahl" -eq 1 ]; then
-    echo "Installiere NVIDIA-Treiber / Installing NVIDIA..."
-    sudo xbps-install -y nvidia nvidia-libs-32bit
-else
-    echo "NVIDIA-Setup übersprungen / NVIDIA skipped."
-fi
+# NVIDIA Treiber installieren / Install NVIDIA-driver
+clear
+echo "Verfügbare NVIDIA-Treiber:"
+echo "1) Neueste NVIDIA-Treiber (nvidia) / Latest driver"
+echo "2) NVIDIA 470 (nvidia470) / GTX 600,700..."
+echo "3) NVIDIA 390 (nvidia390) Geforce 400/500 Serie"
+echo "0) Keine Installation"
+read -p "Bitte wählen Sie einen Treiber aus (1-3, 0 zum Abbrechen): " auswahl
+
+case "$auswahl" in
+    1)
+        echo "Installiere neueste NVIDIA-Treiber... / Installing latest driver"
+        sudo xbps-install -y nvidia nvidia-libs-32bit
+        ;;
+    2)
+        echo "Installiere NVIDIA 470-Treiber... / Installing 470 driver"
+        sudo xbps-install -y nvidia470 nvidia470-libs-32bit
+        ;;
+    3)
+        echo "Installiere NVIDIA 390-Treiber... / Installing 390 driver"
+        sudo xbps-install -y nvidia390 nvidia390-libs-32bit
+        ;;
+    0)
+        echo "NVIDIA-Setup übersprungen. / Setup skipped!"
+        ;;
+    *)
+        echo "Ungültige Auswahl. Keine Änderungen vorgenommen. / invalid selection!"
+        ;;
+esac
+
 sleep 1
 
 #Steamkomponenten / Install some Steam-related-Stuff

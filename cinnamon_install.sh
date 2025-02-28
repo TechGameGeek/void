@@ -83,8 +83,6 @@ sleep 1
 
 #NVIDIA Treiber installieren / Install NVIDIA-driver
 clear
-# NVIDIA Treiber installieren / Install NVIDIA-driver
-clear
 echo "Verfügbare NVIDIA-Treiber:"
 echo "1) Neueste NVIDIA-Treiber (nvidia) / Latest driver"
 echo "2) NVIDIA 470 (nvidia470) / GTX 600,700..."

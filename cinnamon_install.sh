@@ -13,20 +13,20 @@ su -c "chsh -s /bin/bash root"
 sleep 2
 
 #Sudo einrichten / Activate sudo
-clear
-echo "Aktiviere sudo für Gruppe wheel / Activate sudo for wheel-group"
-echo "Bitte Rootpasswort eingeben / Please give rootpassword"
-su -c 'echo "%wheel ALL=(ALL:ALL) ALL" | tee -a /etc/sudoers > /dev/null'
-sleep 2
+#clear
+#echo "Aktiviere sudo für Gruppe wheel / Activate sudo for wheel-group"
+#echo "Bitte Rootpasswort eingeben / Please give rootpassword"
+#su -c 'echo "%wheel ALL=(ALL:ALL) ALL" | tee -a /etc/sudoers > /dev/null'
+#sleep 2
 
 #Styling
-clear
-echo "Richte LightDM und Cinnamon Hintergrundbild ein / Setting up Lightdm/Cinnamon backgroundimage"
-echo " -- Bitte unten das sudo Passwort eingeben / Please give sudo-password -- "
-sudo mkdir -p /usr/share/backgrounds/
-sudo cp ~/void/*.jpg /usr/share/backgrounds/
+#clear
+#echo "Richte LightDM und Cinnamon Hintergrundbild ein / Setting up Lightdm/Cinnamon backgroundimage"
+#echo " -- Bitte unten das sudo Passwort eingeben / Please give sudo-password -- "
+#sudo mkdir -p /usr/share/backgrounds/
+#sudo cp ~/void/*.jpg /usr/share/backgrounds/
 
-#Kopire Autostartscript für udisks2 / copy automountscript für udisk2
+#Kopiere Autostartscript für udisks2 / copy automountscript für udisk2
 sudo cp ~/void/mount_disks.sh /usr/bin/
 
 
@@ -112,9 +112,9 @@ sudo xbps-install -y libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit me
 
 #XORG & Cinnamon & Tools
 clear
-echo "Install XORG/Cinnamon-all..."
+echo "Install XORG/KDE..."
 sudo xbps-install -y xorg
-sudo xbps-install -y octoxbps cinnamon-all xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs xdg-user-dirs-gtk xdg-utils
+sudo xbps-install -y octoxbps kde-plasma kde-baseapps print-manager ffmpegthumbs xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs xdg-user-dirs-gtk xdg-utils
 sleep 1
 
 #Druckerunterstuetzung / Printersupport
@@ -136,7 +136,7 @@ sleep 1
 #Flatpak / Upgradetool
 clear
 echo "Install Flatpak / topgrade..."
-sudo xbps-install -y flatpak topgrade
+sudo xbps-install -y flatpak flatpak-kcm topgrade
 sleep 1
 
 #Fonts
@@ -148,41 +148,8 @@ sleep 1
 #Software
 clear
 echo "Install Software..."
-sudo xbps-install -y firefox gnome-terminal firefox-i18n-de
+sudo xbps-install -y firefox firefox-i18n-de
 sleep 1
-# Erstelle ein Skript, das die gsettings nach der Anmeldung ausführt
-echo "Creating autostart script for cinnamon theme settings..."
-cat <<EOL > /home/$USER/set-cinnamon-theme.sh
-#!/bin/bash
-# Setze das gewünschte Cinnamon-Theme & deutsches Tastaturlayout
-gsettings set org.cinnamon.desktop.interface icon-theme Arc
-gsettings set org.cinnamon.desktop.interface gtk-theme Arc-Dark
-gsettings set org.cinnamon.theme name Arc-Dark
-gsettings set org.cinnamon.desktop.input-sources sources "[('xkb', 'de')]"
-gsettings set org.gnome.desktop.interface monospace-font-name 'Monospace 11'
-gsettings set org.cinnamon.desktop.background picture-uri 'file:///usr/share/backgrounds/cinnamon_background.jpg'
-
-
-# Lösche den Autostart-Eintrag nach der ersten Ausführung
-rm -f ~/.config/autostart/set-cinnamon-theme.desktop
-
-# Gib eine Nachricht aus, dass das Skript abgeschlossen ist
-echo "Cinnamon-Themes wurden gesetzt und Autostart-Eintrag entfernt."
-EOL
-
-# Stelle sicher, dass das Skript ausführbar ist
-chmod +x /home/$USER/set-cinnamon-theme.sh
-
-# Erstelle die Autostart-Datei, die das Skript ausführt
-mkdir -p ~/.config/autostart
-cat <<EOL > ~/.config/autostart/set-cinnamon-theme.desktop
-[Desktop Entry]
-Type=Application
-Exec=/home/$USER/set-cinnamon-theme.sh
-Name=Set Cinnamon Theme
-Comment=Set the default Cinnamon theme after login
-X-GNOME-Autostart-enabled=true
-EOL
 
 # .desktop-Datei für octoxbps-notifier erstellen / create .desktopfile für octoxbps-notifier
 cat > ~/.config/autostart/octoxbps-notifier.desktop <<EOL
@@ -191,23 +158,9 @@ Type=Application
 Exec=/bin/octoxbps-notifier
 Hidden=false
 NoDisplay=false
-X-GNOME-Autostart-enabled=true
+X-KDE-Autostart-enabled=true
 Name=OctoXBPS Notifier
 Comment=Startet OctoXBPS Update Notifier automatisch
-EOL
-
-# .desktop-Datei für deutsche Tastatur / create .desktopfile für german-X11-keyboard
-# Bitte Autostarteintrag in Cinnamon deaktivieren wenn ihr es direkt in Cinnamon setzen wollt
-# Please remove this autostart-entry if you would like to set the keyboardlayout directly in Cinnamon
-cat > ~/.config/autostart/x11kb-german.desktop <<EOL
-[Desktop Entry]
-Type=Application
-Exec=/usr/bin/setxkbmap de
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
-Name=X11-KB-German
-Comment=Deutsche Tastatur aktivieren unter X11
 EOL
 
 # .desktop-Datei für automount-script - udisks2 / create .desktopfile for auto-mount script (for udisks2)
@@ -216,40 +169,26 @@ EOL
 cat > ~/.config/autostart/automount-udisks2.desktop <<EOL
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/mount_disks.sh 
+Exec=/usr/bin/mount_disks.sh
 Hidden=false
 NoDisplay=false
-X-GNOME-Autostart-enabled=true
+X-KDE-Autostart-enabled=true
 Name=X11-automount-udisks2
 Comment=Automountscript für udisks2
+Terminal=false
 EOL
 
 
 # Weiter mit weiteren Installationen oder zum Ende des Skripts
 echo "Cinnamon-Theme Autostart-Skript erstellt. Skript beendet."
 
-#Loginmanager
-clear
-echo "Install LightDM..."
-sudo xbps-install -y lightdm lightdm-gtk-greeter
-sudo ln -s /etc/sv/lightdm/ /var/service/
+#Setup Autostart Loginmanager
+echo "Start Service SDDM..."
+sudo ln -s /etc/sv/sddm/ /var/service/
 sleep 1
-
-#Cinnamon-Themes
-clear
-echo "Install ArcTheme / Arc-icons..."
-sudo xbps-install -y arc-icon-theme arc-theme
-sleep 1
-
-# Füge die gewünschten Einstellungen zur LightDM-Konfiguration hinzu
-echo "theme-name=Arc-Dark" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
-echo "icon-theme-name=Arc" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
-echo "background=/usr/share/backgrounds/lightdmbackground.jpg" | sudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
 
 #Setup Autostart - pipewire & wireplubmer
-
 sudo mkdir -p /etc/pipewire/pipewire.conf.d
-
 sudo ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
 sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
 
@@ -258,8 +197,6 @@ sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pip
 sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
 sleep 1
 clear
-#Deutsche Tastatur aktivieren X11 / Activate german keyboard for X11
-echo "de_DE" > "$HOME/.config/user-dirs.locale"
 
 #Setup automount ssd/hdd - ohne fstab / setup automount for ssds/hdds - without fstab
 sudo cp ~/void/10-mount-drives.rules /etc/polkit-1/rules.d/

@@ -19,12 +19,12 @@ sleep 2
 #su -c 'echo "%wheel ALL=(ALL:ALL) ALL" | tee -a /etc/sudoers > /dev/null'
 #sleep 2
 
-#Styling
-#clear
-#echo "Richte LightDM und Cinnamon Hintergrundbild ein / Setting up Lightdm/Cinnamon backgroundimage"
-#echo " -- Bitte unten das sudo Passwort eingeben / Please give sudo-password -- "
-#sudo mkdir -p /usr/share/backgrounds/
-#sudo cp ~/void/*.jpg /usr/share/backgrounds/
+Styling
+clear
+echo "Richte Hintergrundbild ein / Setting up backgroundimage"
+echo " -- Bitte unten das sudo Passwort eingeben / Please give sudo-password -- "
+sudo mkdir -p /usr/share/backgrounds/
+sudo cp ~/void/*.jpg /usr/share/backgrounds/
 
 #Kopiere Autostartscript für udisks2 / copy automountscript für udisk2
 sudo cp ~/void/mount_disks.sh /usr/bin/
@@ -150,6 +150,30 @@ clear
 echo "Install Software..."
 sudo xbps-install -y firefox firefox-i18n-de
 sleep 1
+
+# Erstelle ein Skript, das KDE-Settings nach der Anmeldung 1x ausführt
+echo "Creating autostart script for kde theme settings..."
+cat <<EOL > /home/$USER/set-kde-theme.sh
+#!/bin/bash
+# Setze das gewünschte KDE-Theme
+plasma-apply-desktoptheme breeze-dark
+lookandfeeltool -a org.kde.breezedark
+#Hintergrundbild festlegen
+kwriteconfig5 --file kwinrc DesktopBackground "/usr/share/backgrounds/background.jpg"
+
+# Lösche den Autostart-Eintrag nach der ersten Ausführung
+rm -f ~/.config/autostart/set-kde-theme.desktop
+
+# Gib eine Nachricht aus, dass das Skript abgeschlossen ist
+echo "KDE-Themes wurden gesetzt und Autostart-Eintrag entfernt."
+EOL
+
+# Stelle sicher, dass das Skript ausführbar ist / make sure script is executeable
+chmod +x /home/$USER/set-kde-theme.sh
+
+# Setze sddm Hintergrundbild / Setup sddm wallpaper
+backgroundimage="/usr/share/wallpapers/background_sddm.jpg"
+sudo sed -i "s|^Background=.*|Background=$HINTERGRUNDBILD|" /etc/sddm.conf
 
 # .desktop-Datei für octoxbps-notifier erstellen / create .desktopfile für octoxbps-notifier
 cat > ~/.config/autostart/octoxbps-notifier.desktop <<EOL

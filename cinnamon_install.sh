@@ -1,5 +1,12 @@
 #!/bin/bash
+#Skript ist noch nicht fertig - noch nicht verwenden! / WORK IN PROGRESS -- do not use yet!
 #Das Skript ist für NVIDIA-GPU Besitzer gedacht / AMD GPU Besitzer kommentieren die Zeile mit der NVIDIA Paketinstallation aus!
+#This script is intended to be used by NVIDIA-GPU Owners, you may comment the line with
+#sudo xbps-install -y nvidia if you have an AMD-GPU
+#Void aktualisieren / update void
+
+#Setze Keyboardlayout de-latin1 / Set keyboard de-latin1 (if you don't want DE-key comment out this line)
+#loadkeys de-latin1
 
 #Das folgende Skript ist für die Installation von Cinnamon & div. Dienste gedacht, nachdem die Basisinstallation durchgefuehrt worden ist!
 #The following script is for installing Cinnamon & Services after installing base-void (glibc)
@@ -24,6 +31,9 @@ echo "Richte LightDM und Cinnamon Hintergrundbild ein / Setting up Lightdm/Cinna
 echo " -- Bitte unten das sudo Passwort eingeben / Please give sudo-password -- "
 sudo mkdir -p /usr/share/backgrounds/
 sudo cp ~/void/*.jpg /usr/share/backgrounds/
+
+#Kopire Autostartscript für udisks2 / copy automountscript für udisk2
+sudo cp ~/void/mount_disks.sh /usr/bin/
 
 
 #Systemupdate checken / Check systemupdates
@@ -73,13 +83,34 @@ sleep 1
 
 #NVIDIA Treiber installieren / Install NVIDIA-driver
 clear
-read -p "NVIDIA-Treiber installieren / Install Nvidia-driver? (1 = Ja/Yes, 0 = Nein/No): " auswahl
-if [ "$auswahl" -eq 1 ]; then
-    echo "Installiere NVIDIA-Treiber / Installing NVIDIA..."
-    sudo xbps-install -y nvidia nvidia-libs-32bit
-else
-    echo "NVIDIA-Setup übersprungen / NVIDIA skipped."
-fi
+echo "Verfügbare NVIDIA-Treiber:"
+echo "1) Neueste NVIDIA-Treiber (nvidia) / Latest driver"
+echo "2) NVIDIA 470 (nvidia470) / GTX 600,700..."
+echo "3) NVIDIA 390 (nvidia390) Geforce 400/500 Serie"
+echo "0) Keine Installation"
+read -p "Bitte wählen Sie einen Treiber aus (1-3, 0 zum Abbrechen): " auswahl
+
+case "$auswahl" in
+    1)
+        echo "Installiere neueste NVIDIA-Treiber... / Installing latest driver"
+        sudo xbps-install -y nvidia nvidia-libs-32bit
+        ;;
+    2)
+        echo "Installiere NVIDIA 470-Treiber... / Installing 470 driver"
+        sudo xbps-install -y nvidia470 nvidia470-libs-32bit
+        ;;
+    3)
+        echo "Installiere NVIDIA 390-Treiber... / Installing 390 driver"
+        sudo xbps-install -y nvidia390 nvidia390-libs-32bit
+        ;;
+    0)
+        echo "NVIDIA-Setup übersprungen. / Setup skipped!"
+        ;;
+    *)
+        echo "Ungültige Auswahl. Keine Änderungen vorgenommen. / invalid selection!"
+        ;;
+esac
+
 sleep 1
 
 #Steamkomponenten / Install some Steam-related-Stuff
@@ -183,6 +214,20 @@ NoDisplay=false
 X-GNOME-Autostart-enabled=true
 Name=X11-KB-German
 Comment=Deutsche Tastatur aktivieren unter X11
+EOL
+
+# .desktop-Datei für automount-script - udisks2 / create .desktopfile for auto-mount script (for udisks2)
+# Bitte Autostarteintrag in Cinnamon deaktivieren wenn ihr es direkt in Cinnamon setzen wollt
+# Please remove this autostart-entry if you would like to set the keyboardlayout directly in Cinnamon
+cat > ~/.config/autostart/automount-udisks2.desktop <<EOL
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/mount_disks.sh 
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=X11-automount-udisks2
+Comment=Automountscript für udisks2
 EOL
 
 

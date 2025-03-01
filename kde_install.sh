@@ -20,12 +20,14 @@ sleep 2
 #su -c 'echo "%wheel ALL=(ALL:ALL) ALL" | tee -a /etc/sudoers > /dev/null'
 #sleep 2
 
-Styling
+#Styling
 clear
 echo "Richte Hintergrundbild ein / Setting up backgroundimage"
 echo " -- Bitte unten das sudo Passwort eingeben / Please give sudo-password -- "
 sudo mkdir -p /usr/share/backgrounds/
 sudo cp ~/void/*.jpg /usr/share/backgrounds/
+sudo cp ~/void/set-kde-theme.sh /usr/bin/
+
 
 #Kopiere Autostartscript für udisks2 / copy automountscript für udisk2
 sudo cp ~/void/mount_disks.sh /usr/bin/
@@ -151,9 +153,6 @@ echo "Install Software..."
 sudo xbps-install -y firefox firefox-i18n-de
 sleep 1
 
-#Hintergrundbild setzen / Set wallpaper
-kwriteconfig6 --file kwinrc DesktopBackground "/usr/share/backgrounds/background.jpg"
-
 #Setup Autostart Loginmanager
 echo "Start Service SDDM..."
 sudo ln -s /etc/sv/sddm/ /var/service/
@@ -163,7 +162,6 @@ sleep 1
 sudo mkdir -p /etc/pipewire/pipewire.conf.d
 sudo ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
 sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
-
 sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
 sleep 1
 clear
@@ -171,5 +169,10 @@ clear
 #Setup automount ssd/hdd - ohne fstab / setup automount for ssds/hdds - without fstab
 sudo cp ~/void/10-mount-drives.rules /etc/polkit-1/rules.d/
 clear
+
+#Setup .desktopfile fuer set-kde-wallpaper
+sudo cp ~/void/set-wallpaper.desktop /etc/xdg/autostart/
+
+
 echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"
 echo "sudo reboot verwenden - use sudo reboot"

@@ -176,12 +176,14 @@ clear
 
 #Setup .desktopfile (autostart) fuer set-kde-theme
 sudo cp ~/void/set-kde-theme.desktop ~/.config/autostart/
+sudo chmod +x ~/.config/autostart/set-kde-theme.desktop
 
 #Setup sddm wallpaper
 sudo cp ~/void/theme.conf /usr/share/sddm/themes/breeze/
 
 #Setup octo-xbps-notifier Autostart
 sudo cp ~/void/octoxbpsnotifier.desktop ~/.config/autostart/
+sudo chmod +x ~/.config/autostart/octoxbpsnotifier.desktop
 
 
 echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"

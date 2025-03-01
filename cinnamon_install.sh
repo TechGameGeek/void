@@ -1,12 +1,6 @@
 #!/bin/bash
-#Skript ist noch nicht fertig - noch nicht verwenden! / WORK IN PROGRESS -- do not use yet!
 #Das Skript ist für NVIDIA-GPU Besitzer gedacht / AMD GPU Besitzer kommentieren die Zeile mit der NVIDIA Paketinstallation aus!
 #This script is intended to be used by NVIDIA-GPU Owners, you may comment the line with
-#sudo xbps-install -y nvidia if you have an AMD-GPU
-#Void aktualisieren / update void
-
-#Setze Keyboardlayout de-latin1 / Set keyboard de-latin1 (if you don't want DE-key comment out this line)
-#loadkeys de-latin1
 
 #Das folgende Skript ist für die Installation von Cinnamon & div. Dienste gedacht, nachdem die Basisinstallation durchgefuehrt worden ist!
 #The following script is for installing Cinnamon & Services after installing base-void (glibc)

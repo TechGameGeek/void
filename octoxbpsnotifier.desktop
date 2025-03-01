@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=OctoBPS Notifier
+Exec=octoxbps-notifier
+Comment=Notifies about available updates for Octopi
+Icon=octoxbps-notifier
+Terminal=false
+X-GNOME-Autostart-enabled=true

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/set-kde-theme.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Mein Autostart-Skript
+Comment=Dieses Skript wird automatisch gestartet

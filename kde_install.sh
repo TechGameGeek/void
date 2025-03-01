@@ -27,10 +27,12 @@ echo " -- Bitte unten das sudo Passwort eingeben / Please give sudo-password -- 
 sudo mkdir -p /usr/share/backgrounds/
 sudo cp ~/void/*.jpg /usr/share/backgrounds/
 sudo cp ~/void/set-kde-theme.sh /usr/bin/
+sudo chmod +x /usr/bin/set-kde-theme.sh
 
 
 #Kopiere Autostartscript für udisks2 / copy automountscript für udisk2
 sudo cp ~/void/mount_disks.sh /usr/bin/
+sudo chmod +x /usr/bin/mount_disks.sh
 
 
 #Systemupdate checken / Check systemupdates
@@ -162,6 +164,8 @@ sleep 1
 sudo mkdir -p /etc/pipewire/pipewire.conf.d
 sudo ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
 sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
+
+#Nur pipewire automatisch starten lassen (wireplumber nicht)
 sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
 sleep 1
 clear
@@ -175,6 +179,9 @@ sudo cp ~/void/set-kde-theme.desktop ~/.config/autostart/
 
 #Setup sddm wallpaper
 sudo cp ~/void/theme.conf /usr/share/sddm/themes/breeze/
+
+#Setup octo-xbps-notifier Autostart
+sudo cp ~/void/octoxbpsnotifier.desktop ~/.config/autostart/
 
 
 echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"

@@ -171,7 +171,7 @@ sudo cp ~/void/10-mount-drives.rules /etc/polkit-1/rules.d/
 clear
 
 #Setup .desktopfile fuer set-kde-wallpaper
-sudo cp ~/void/set-wallpaper.desktop /etc/xdg/autostart/
+sudo cp ~/void/set-wallpaper.desktop ~/.config/autostart/
 
 
 echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"

@@ -114,15 +114,14 @@ sudo xbps-install -y libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit me
 clear
 echo "Install XORG/KDE..."
 sudo xbps-install -y xorg
-sudo xbps-install -y octoxbps kde-plasma kde-baseapps print-manager ffmpegthumbs xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs xdg-user-dirs-gtk xdg-utils
+sudo xbps-install -y octoxbps kde-plasma kde-baseapps ffmpegthumbs xdg-desktop-portal xdg-desktop-portal-gtk xdg-user-dirs xdg-user-dirs-gtk xdg-utils
 sleep 1
 
 #Druckerunterstuetzung / Printersupport
 clear
 echo "Install Printer..."
-sudo xbps-install -y cups cups-filters gutenprint system-config-printer
+sudo xbps-install -y cups cups-filters gutenprint print-manager
 sudo ln -s /etc/sv/cupsd /var/service/
-sudo xbps-install -y gnome-system-tools users-admin
 sleep 1
 
 #Filesystem
@@ -164,8 +163,6 @@ kwriteconfig5 --file kwinrc DesktopBackground "/usr/share/backgrounds/background
 # Lösche den Autostart-Eintrag nach der ersten Ausführung
 rm -f ~/.config/autostart/set-kde-theme.desktop
 
-# Gib eine Nachricht aus, dass das Skript abgeschlossen ist
-echo "KDE-Themes wurden gesetzt und Autostart-Eintrag entfernt."
 EOL
 
 # Stelle sicher, dass das Skript ausführbar ist / make sure script is executeable
@@ -204,7 +201,7 @@ EOL
 
 
 # Weiter mit weiteren Installationen oder zum Ende des Skripts
-echo "Cinnamon-Theme Autostart-Skript erstellt. Skript beendet."
+echo "Autostart-Skripts erstellt. Skript beendet."
 
 #Setup Autostart Loginmanager
 echo "Start Service SDDM..."

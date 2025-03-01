@@ -150,58 +150,8 @@ echo "Install Software..."
 sudo xbps-install -y firefox firefox-i18n-de
 sleep 1
 
-# Erstelle ein Skript, das KDE-Settings nach der Anmeldung 1x ausführt
-echo "Creating autostart script for kde theme settings..."
-cat <<EOL > /home/$USER/set-kde-theme.sh
-#!/bin/bash
-# Setze das gewünschte KDE-Theme
-plasma-apply-desktoptheme breeze-dark
-lookandfeeltool -a org.kde.breezedark
-#Hintergrundbild festlegen
-kwriteconfig5 --file kwinrc DesktopBackground "/usr/share/backgrounds/background.jpg"
-
-# Lösche den Autostart-Eintrag nach der ersten Ausführung
-rm -f ~/.config/autostart/set-kde-theme.desktop
-
-EOL
-
-# Stelle sicher, dass das Skript ausführbar ist / make sure script is executeable
-chmod +x /home/$USER/set-kde-theme.sh
-
-# Setze sddm Hintergrundbild / Setup sddm wallpaper
-backgroundimage="/usr/share/wallpapers/background_sddm.jpg"
-sudo sed -i "s|^Background=.*|Background=$HINTERGRUNDBILD|" /etc/sddm.conf
-
-# .desktop-Datei für octoxbps-notifier erstellen / create .desktopfile für octoxbps-notifier
-cat > ~/.config/autostart/octoxbps-notifier.desktop <<EOL
-[Desktop Entry]
-Type=Application
-Exec=/bin/octoxbps-notifier
-Hidden=false
-NoDisplay=false
-X-KDE-Autostart-enabled=true
-Name=OctoXBPS Notifier
-Comment=Startet OctoXBPS Update Notifier automatisch
-EOL
-
-# .desktop-Datei für automount-script - udisks2 / create .desktopfile for auto-mount script (for udisks2)
-# Bitte Autostarteintrag in Cinnamon deaktivieren wenn ihr es direkt in Cinnamon setzen wollt
-# Please remove this autostart-entry if you would like to set the keyboardlayout directly in Cinnamon
-cat > ~/.config/autostart/automount-udisks2.desktop <<EOL
-[Desktop Entry]
-Type=Application
-Exec=/usr/bin/mount_disks.sh
-Hidden=false
-NoDisplay=false
-X-KDE-Autostart-enabled=true
-Name=X11-automount-udisks2
-Comment=Automountscript für udisks2
-Terminal=false
-EOL
-
-
-# Weiter mit weiteren Installationen oder zum Ende des Skripts
-echo "Autostart-Skripts erstellt. Skript beendet."
+#Hintergrundbild setzen / Set wallpaper
+kwriteconfig6 --file kwinrc DesktopBackground "/usr/share/backgrounds/background.jpg"
 
 #Setup Autostart Loginmanager
 echo "Start Service SDDM..."
@@ -213,8 +163,6 @@ sudo mkdir -p /etc/pipewire/pipewire.conf.d
 sudo ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
 sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
 
-#folgende Zeile nicht auskommetieren sonst läuft pipewire nicht / do not activate the following line. pipewire stops working if so!
-#sudo ln -s /usr/share/applications/wireplumber.desktop /etc/xdg/autostart/
 sudo ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/
 sleep 1
 clear

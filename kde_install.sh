@@ -170,8 +170,11 @@ clear
 sudo cp ~/void/10-mount-drives.rules /etc/polkit-1/rules.d/
 clear
 
-#Setup .desktopfile (autostart) fuer set-kde-wallpaper
+#Setup .desktopfile (autostart) fuer set-kde-theme
 sudo cp ~/void/set-kde-theme.desktop ~/.config/autostart/
+
+#Setup sddm wallpaper
+sudo cp ~/void/theme.conf /usr/share/sddm/themes/breeze/
 
 
 echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"

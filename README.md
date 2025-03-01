@@ -1,6 +1,6 @@
-# Void Linux Cinnamon Installation Script
+# Void Linux KDE-Plasma Installation Script
 
-This script simplifies the installation of Void Linux with the Cinnamon desktop environment.
+This script simplifies the installation of Void Linux with the KDE-plasma desktop environment.
 
 ## Requirements
 - Void Linux (glibc) has been installed using the base image.
@@ -25,15 +25,15 @@ This script simplifies the installation of Void Linux with the Cinnamon desktop 
    ```
 5. **Make the script executable**:
    ```bash
-   chmod +x cinnamon_install.sh
+   chmod +x kde_install.sh
    ```
 6. **Run the script**:
    ```bash
-   ./cinnamon_install.sh
+   ./kde_install.sh
    ```
 
 ## What does the script do?
-- Installs Void Linux with the Cinnamon desktop environment (`cinnamon-all`).
+- Installs Void Linux with the KDE-plasma desktop environment.
 - Activates:
   - PipeWire
   - Printer support
@@ -41,10 +41,9 @@ This script simplifies the installation of Void Linux with the Cinnamon desktop 
 - During installation, you will be asked whether you want to install NVIDIA drivers (from latest to older versions).
 - Automatically mounts drives using `udisks2` & `polkit`, so there's no need to edit `/etc/fstab`.
 - Customizations:
-  - Cinnamon and LightDM background images are modified.
-  - Autostart scripts for Cinnamon:
+  - KDE and SDDM background images are modified.
+  - Autostart scripts for KDE-plasma:
     - **Enables `octoxbps-updater`**.
-    - **Sets the German keyboard layout** (can be removed if a US layout is preferred).
     - **Automounts all Linux filesystem drives**, useful for a Steam library, for example.
 
 ## Feedback

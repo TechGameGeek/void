@@ -175,6 +175,7 @@ sudo cp ~/void/10-mount-drives.rules /etc/polkit-1/rules.d/
 clear
 
 #Setup .desktopfile (autostart) fuer set-kde-theme
+sudo mkdir -p ~/.config/autostart/
 sudo cp ~/void/set-kde-theme.desktop ~/.config/autostart/
 sudo chmod +x ~/.config/autostart/set-kde-theme.desktop
 

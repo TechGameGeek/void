@@ -184,9 +184,6 @@ chmod +x ~/.config/autostart/octoxbpsnotifier.desktop
 kwriteconfig6 --file ~/.config/kxkbrc --group Layout --key LayoutList "de"
 kwriteconfig6 --file ~/.config/kxkbrc --group Layout --key Use "true"
 
-#Automount bei Anmeldung in Verbindung mit udisks2 / automount on login in connection with udisks2
-kwriteconfig6 --file kioslaverc --group "Device Automounter" --key "AutomountOnLogin" true
-
 clear
 echo "Installation von Zusatzsoftware übersprungen / Softwareinstallation skipped."
 echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"

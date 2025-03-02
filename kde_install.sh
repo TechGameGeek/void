@@ -187,6 +187,10 @@ sudo cp ~/void/theme.conf /usr/share/sddm/themes/breeze/
 cp ~/void/octoxbpsnotifier.desktop ~/.config/autostart/
 chmod +x ~/.config/autostart/octoxbpsnotifier.desktop
 
+#Setup deutsches KB-Autostart
+kwriteconfig6 --file ~/.config/kxkbrc --group Layout --key LayoutList "de"
+kwriteconfig6 --file ~/.config/kxkbrc --group Layout --key Use "true"
+
 
 echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"
 echo "sudo reboot verwenden - use sudo reboot"

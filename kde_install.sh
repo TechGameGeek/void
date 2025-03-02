@@ -74,10 +74,10 @@ sleep 1
 clear
 echo "Verfügbare NVIDIA-Treiber: / Available drivers"
 echo "1) Neueste NVIDIA-Treiber (nvidia) / Latest driver"
-echo "2) NVIDIA 470 (nvidia470) / GTX 600,700..."
-echo "3) NVIDIA 390 (nvidia390) Geforce 400/500 Serie"
-echo "0) Keine Installation / no installation"
-read -p "Treiber auswählen / choose driver (1-3, 0 zum Abbrechen / 0 to skip): " auswahl
+#echo "2) NVIDIA 470 (nvidia470) / GTX 600,700..."
+#echo "3) NVIDIA 390 (nvidia390) Geforce 400/500 Serie"
+#echo "0) Keine Installation / no installation"
+read -p "Treiber auswählen / choose driver (1, 0 zum Abbrechen / 0 to skip): " auswahl
 
 case "$auswahl" in
     1)

@@ -181,22 +181,8 @@ chmod +x ~/.config/autostart/octoxbpsnotifier.desktop
 kwriteconfig6 --file ~/.config/kxkbrc --group Layout --key LayoutList "de"
 kwriteconfig6 --file ~/.config/kxkbrc --group Layout --key Use "true"
 
-#Wahl Zusatzsoftware-installer / choose additional software intaller
 clear
-echo "Zusatzsoftwareinstallation aufrufen? / Start Softwareinstaller (additional programs)"
-echo "1 = Ja / yes"
-echo "0 = Nein / no"
-read -p "Bitte wählen: / Choose: " auswahl
-
-if [[ "$auswahl" == "1" ]]; then
-    ./software.sh
-elif [[ "$auswahl" == "0" ]]; then
-    clear
-    echo "Installation von Zusatzsoftware übersprungen / Softwareinstallation skipped."
-    echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"
-    echo "sudo reboot verwenden - use sudo reboot"
-else
-    echo "Ungültige Eingabe!"
-fi
-
+echo "Installation von Zusatzsoftware übersprungen / Softwareinstallation skipped."
+echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"
+echo "sudo reboot verwenden - use sudo reboot"
 

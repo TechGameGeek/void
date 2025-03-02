@@ -179,7 +179,7 @@ sudo cp ~/void/set-kde-theme.desktop ~/.config/autostart/
 sudo chmod +x ~/.config/autostart/set-kde-theme.desktop
 
 #Setup sddm wallpaper
-sudo cp ~/void/theme.conf /usr/share/sddm/themes/breeze/
+sudo cp ~/void/sddm.conf /etc/sddm.conf
 
 #Setup octo-xbps-notifier Autostart
 sudo cp ~/void/octoxbpsnotifier.desktop ~/.config/autostart/

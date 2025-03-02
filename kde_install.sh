@@ -1,10 +1,7 @@
 #!/bin/bash
-# !! WORK IN PROGRESS -- Do not use yet! !!
-#Das Skript ist für NVIDIA-GPU Besitzer gedacht / AMD GPU Besitzer kommentieren die Zeile mit der NVIDIA Paketinstallation aus!
-#This script is intended to be used by NVIDIA-GPU Owners, you may comment the line with
 
-#Das folgende Skript ist für die Installation von Cinnamon & div. Dienste gedacht, nachdem die Basisinstallation durchgefuehrt worden ist!
-#The following script is for installing Cinnamon & Services after installing base-void (glibc)
+#Das folgende Skript ist für die Installation von KDE Plasma & div. Dienste gedacht, nachdem die Basisinstallation durchgefuehrt worden ist!
+#The following script is for installing KDE Plasma & Services after installing base-void (glibc)
 
 #bash starten & bash für root setzen / start bash - set for root
 clear
@@ -13,16 +10,9 @@ echo "Bitte Rootpasswort eingeben / Please give rootpassword"
 su -c "chsh -s /bin/bash root"
 sleep 2
 
-#Sudo einrichten / Activate sudo
-#clear
-#echo "Aktiviere sudo für Gruppe wheel / Activate sudo for wheel-group"
-#echo "Bitte Rootpasswort eingeben / Please give rootpassword"
-#su -c 'echo "%wheel ALL=(ALL:ALL) ALL" | tee -a /etc/sudoers > /dev/null'
-#sleep 2
-
 #Styling
 clear
-echo "Richte Hintergrundbild ein / Setting up backgroundimage"
+echo "Richte Hintergrundbild ein kopiere Skript für Themesetting / Setting up backgroundimage copying script for themesettings"
 echo " -- Bitte unten das sudo Passwort eingeben / Please give sudo-password -- "
 sudo mkdir -p /usr/share/backgrounds/
 sudo cp ~/void/*.jpg /usr/share/backgrounds/
@@ -82,12 +72,12 @@ sleep 1
 
 #NVIDIA Treiber installieren / Install NVIDIA-driver
 clear
-echo "Verfügbare NVIDIA-Treiber:"
+echo "Verfügbare NVIDIA-Treiber: / Available drivers"
 echo "1) Neueste NVIDIA-Treiber (nvidia) / Latest driver"
 echo "2) NVIDIA 470 (nvidia470) / GTX 600,700..."
 echo "3) NVIDIA 390 (nvidia390) Geforce 400/500 Serie"
-echo "0) Keine Installation"
-read -p "Bitte wählen Sie einen Treiber aus (1-3, 0 zum Abbrechen): " auswahl
+echo "0) Keine Installation / no installation"
+read -p "Treiber auswählen / choose driver (1-3, 0 zum Abbrechen / 0 to skip): " auswahl
 
 case "$auswahl" in
     1)
@@ -183,14 +173,13 @@ chmod +x ~/.config/autostart/set-kde-theme.desktop
 sudo cp ~/void/sddm.conf /etc/sddm.conf
 sudo cp ~/void/theme.conf /usr/share/sddm/themes/breeze/
 
-#Setup octo-xbps-notifier Autostart
+#Setup octo-xbps-notifier autostart
 cp ~/void/octoxbpsnotifier.desktop ~/.config/autostart/
 chmod +x ~/.config/autostart/octoxbpsnotifier.desktop
 
-#Setup deutsche Tastatur
+#Setup deutsche Tastatur / Setup german keyboard (remove for english)
 kwriteconfig6 --file ~/.config/kxkbrc --group Layout --key LayoutList "de"
 kwriteconfig6 --file ~/.config/kxkbrc --group Layout --key Use "true"
-
 
 echo "Setupscript beendet - System kann nun neu gestartet werden / Setup finished - please reboot"
 echo "sudo reboot verwenden - use sudo reboot"

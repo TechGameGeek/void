@@ -187,7 +187,7 @@ sudo cp ~/void/theme.conf /usr/share/sddm/themes/breeze/
 cp ~/void/octoxbpsnotifier.desktop ~/.config/autostart/
 chmod +x ~/.config/autostart/octoxbpsnotifier.desktop
 
-#Setup deutsches KB-Autostart
+#Setup deutsche Tastatur
 kwriteconfig6 --file ~/.config/kxkbrc --group Layout --key LayoutList "de"
 kwriteconfig6 --file ~/.config/kxkbrc --group Layout --key Use "true"
 

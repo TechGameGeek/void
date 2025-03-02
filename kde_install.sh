@@ -18,6 +18,8 @@ sudo mkdir -p /usr/share/backgrounds/
 sudo cp ~/void/*.jpg /usr/share/backgrounds/
 sudo cp ~/void/set-kde-theme.sh /usr/bin/
 sudo chmod +x /usr/bin/set-kde-theme.sh
+sudo mkdir /usr/share/sddm/themes/tgg-theme
+sudo cp -r /usr/share/sddm/themes/breeze /usr/share/sddm/themes/tgg-theme
 
 
 #Kopiere Autostartscript für udisks2 / copy automountscript für udisk2
